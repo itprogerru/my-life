@@ -17,12 +17,12 @@ export class AuthController {
     }
 
     @Post('/signin')
-    singIn(@Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto): Promise<{ accessToken: string }> {
+    singIn(@Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto): Promise<{ accessToken: string, refreshToken: string }> {
         return this.authService.singIn(authCredentialsDto);
     }
 
     @Post('/refresh-token')
-    refreshToken(@Body(ValidationPipe) tokenCredentialsDto: TokenCredentialsDto) {
-
+    refreshToken(@Body(ValidationPipe) tokenCredentialsDto: TokenCredentialsDto): Promise<{ accessToken: string, refreshToken: string }> {
+        return this.authService.refreshToken(tokenCredentialsDto)
     }
 }

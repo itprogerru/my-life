@@ -9,6 +9,7 @@ async function bootstrap() {
       .setTitle('My life')
       .setDescription('description api')
       .setVersion('1.0')
+      .addBearerAuth('Authorization', 'header')
       .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
